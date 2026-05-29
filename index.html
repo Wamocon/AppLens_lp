@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AppLens - Monitoring und zentrale Überwachung von WAMOCON Web-Applikationen</title>
+  <meta name="description" content="AppLens ist eine webbasierte Software-as-a-Service-Plattform für das Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen. Das Angebot richtet sich an Unternehmen und gewerbliche Nutzer.">
+  <meta name="keywords" content="AppLens, Monitoring, Web-Applikationen, WAMOCON, SaaS, zentrale Überwachung, Dashboard, B2B">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="WAMOCON GmbH">
+  <meta name="theme-color" content="#8f6a3f">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="app-icon-light.svg">
+  <link rel="canonical" href="https://applens.vercel.app/">
+
+  <meta property="og:title" content="AppLens - Monitoring. Übersicht. Kontrolle.">
+  <meta property="og:description" content="AppLens ist eine webbasierte Software-as-a-Service-Plattform für das Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="AppLens">
+  <meta property="og:image" content="app-icon-light.svg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AppLens - Monitoring und zentrale Überwachung">
+  <meta name="twitter:description" content="Webbasierte SaaS-Plattform für das Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen. Ausschließlich für Unternehmen und gewerbliche Nutzer.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AppLens",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Webbasierte Software-as-a-Service-Plattform für das Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen.",
+    "offers": {"@type": "Offer", "priceCurrency": "EUR", "description": "B2B SaaS-Plattform"},
+    "author": {"@type": "Organization", "name": "WAMOCON GmbH", "address": "Mergenthalerallee 79-81, 65760 Eschborn"}
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Wer kann AppLens nutzen?", "acceptedAnswer": {"@type": "Answer", "text": "AppLens richtet sich an Unternehmen und gewerbliche Nutzer."}},
+      {"@type": "Question", "name": "Was überwacht AppLens?", "acceptedAnswer": {"@type": "Answer", "text": "AppLens überwacht WAMOCON Web-Applikationen."}},
+      {"@type": "Question", "name": "Wie hoch ist die angestrebte Verfügbarkeit?", "acceptedAnswer": {"@type": "Answer", "text": "Der Anbieter bemüht sich um eine Verfügbarkeit der Plattform von 99,5 % im Jahresmittel."}},
+      {"@type": "Question", "name": "Ist eine Installation erforderlich?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. AppLens ist vollständig webbasiert und direkt im Browser nutzbar."}}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --color-bg: #f5f5f7;
+      --color-bg-alt: #eeeef0;
+      --color-surface: #ffffff;
+      --color-border: rgba(0,0,0,.08);
+      --color-border-hover: rgba(0,0,0,.14);
+      --color-border-accent: rgba(143,106,63,.18);
+      --color-accent: #8f6a3f;
+      --color-accent-dim: #6e5030;
+      --color-accent-soft: rgba(143,106,63,.06);
+      --color-text-main: #111113;
+      --color-muted: #555558;
+      --color-faint: #8e8e93;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-text-main); }
+  </style>
+</head>
+
+<body class="overflow-x-hidden antialiased leading-relaxed">
+  <div class="gradient-orbs" aria-hidden="true">
+    <div class="orb orb--1"></div>
+    <div class="orb orb--2"></div>
+    <div class="orb orb--3"></div>
+  </div>
+
+  <div class="fixed top-0 left-0 right-0 z-[60] overflow-hidden" style="height:48px;background:#0a0a0c;border-bottom:1px solid rgba(143,106,63,.25);">
+    <div style="display:flex;align-items:center;height:100%;white-space:nowrap;animation:ticker-scroll 18s linear infinite;">
+      <span class="ticker-item">APPLENS &mdash; Monitoring. Übersicht. Kontrolle.</span>
+      <span class="ticker-item">APPLENS &mdash; Monitoring. Übersicht. Kontrolle.</span>
+      <span class="ticker-item">APPLENS &mdash; Monitoring. Übersicht. Kontrolle.</span>
+      <span class="ticker-item">APPLENS &mdash; Monitoring. Übersicht. Kontrolle.</span>
+    </div>
+  </div>
+
+  <nav class="fixed top-[48px] left-0 right-0 z-50 h-16 flex items-center transition-all duration-400" id="nav">
+    <div class="w-full max-w-[1100px] mx-auto px-5 md:px-10 flex items-center justify-between">
+      <a href="#" class="hover:opacity-70 transition-opacity flex items-center gap-2" style="text-decoration:none;">
+        <img src="app-icon-light.svg" alt="AppLens Icon" style="width:28px;height:28px;">
+        <span style="font-size:1.5rem;font-weight:900;letter-spacing:-0.5px;color:#8f6a3f;">AppLens</span>
+      </a>
+      <div class="hidden md:flex items-center gap-4">
+        <div class="nav-links-pill">
+          <a href="#problem" class="nav-link" data-nav-section="problem">Problem</a>
+          <a href="#warum" class="nav-link" data-nav-section="warum">Lösung</a>
+          <a href="#funktionen" class="nav-link" data-nav-section="funktionen">Funktionen</a>
+          <a href="#process" class="nav-link" data-nav-section="process">Prozess</a>
+          <a href="#ablauf" class="nav-link" data-nav-section="ablauf">So geht's</a>
+          <a href="#faq" class="nav-link" data-nav-section="faq">FAQ</a>
+        </div>
+        <a href="https://applens.vercel.app" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;background:#8f6a3f;color:#fff;font-size:.8rem;font-weight:700;border-radius:999px;text-decoration:none;">Zur App</a>
+        <div class="flex items-center gap-2 text-sm font-semibold" style="color:var(--color-muted);background:rgba(255,255,255,0.05);padding:6px 12px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);">
+          <a href="index.html" style="color:#8f6a3f;text-decoration:none;">DE</a>
+          <span style="opacity:0.3">|</span>
+          <a href="index.en.html" class="hover:text-white transition-colors" style="text-decoration:none;">EN</a>
+        </div>
+      </div>
+      <button class="nav-hamburger md:hidden" id="navHamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div id="mobileMenu" aria-hidden="true">
+    <button style="position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;" onclick="closeMobileMenu()">&times;</button>
+    <div class="mm-brand">AppLens</div>
+    <div class="mm-grid">
+      <a href="#problem" class="mm-link" onclick="closeMobileMenu()">Problem</a>
+      <a href="#warum" class="mm-link" onclick="closeMobileMenu()">Lösung</a>
+      <a href="#funktionen" class="mm-link" onclick="closeMobileMenu()">Funktionen</a>
+      <a href="#process" class="mm-link" onclick="closeMobileMenu()">Prozess</a>
+      <a href="#ablauf" class="mm-link" onclick="closeMobileMenu()">So geht's</a>
+      <a href="#faq" class="mm-link" onclick="closeMobileMenu()">FAQ</a>
+      <a href="#final-cta" class="mm-link" onclick="closeMobileMenu()">Zur App</a>
+    </div>
+    <div style="margin-top:2rem;display:flex;justify-content:center;gap:1.5rem;font-size:1.2rem;font-weight:700;">
+      <a href="index.html" style="color:#8f6a3f;text-decoration:none;">DE</a>
+      <span style="color:var(--color-border);">|</span>
+      <a href="index.en.html" style="color:var(--color-muted);text-decoration:none;">EN</a>
+    </div>
+  </div>
+
+  <section class="relative flex items-center justify-center overflow-hidden pt-[160px] pb-[130px]" id="hero">
+    <canvas id="heroParticles" class="absolute inset-0 z-[1]"></canvas>
+    <div class="absolute inset-0 z-0" style="background:radial-gradient(ellipse 70% 55% at 50% 40%,rgba(143,106,63,.09)0%,transparent 65%),radial-gradient(ellipse 50% 60% at 20% 80%,rgba(143,106,63,.05)0%,transparent 50%),radial-gradient(ellipse 45% 50% at 80% 25%,rgba(95,127,116,.07)0%,transparent 50%);"></div>
+    <div class="absolute inset-0 z-0 opacity-[.06]" style="background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 60% 55% at 50% 50%,black 0%,transparent 70%);"></div>
+
+    <div class="relative z-10 text-center max-w-[960px] px-5">
+      <div class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7" style="background:rgba(143,106,63,.12);border:1px solid rgba(143,106,63,.35);">
+        <img src="app-icon-light.svg" alt="AppLens" style="width:16px;height:16px;">
+        <span style="font-size:.8rem;font-weight:700;color:#a07843;letter-spacing:.06em;text-transform:uppercase;">Software-as-a-Service. Webbasiert. B2B.</span>
+      </div>
+
+      <h1 class="reveal text-3xl md:text-7xl lg:text-8xl font-bold leading-[1.08] tracking-tight mb-6">
+        Monitoring.<br><span class="gradient-text">Übersicht. Kontrolle.</span>
+      </h1>
+      <p class="reveal text-lg md:text-xl max-w-[680px] mx-auto leading-relaxed" style="color:var(--color-muted);">
+        AppLens ist eine webbasierte Software-as-a-Service-Plattform für das Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen.
+      </p>
+
+      <div class="reveal mt-10 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://applens.vercel.app" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 30px;background:#8f6a3f;color:#fff;font-size:.95rem;font-weight:700;border-radius:12px;text-decoration:none;transition:all .25s ease;box-shadow:0 4px 24px rgba(143,106,63,.3);">Zur App</a>
+      </div>
+
+      <p class="reveal mt-5 text-sm" style="color:#8e8e93;">Das Angebot richtet sich an Unternehmen und gewerbliche Nutzer.</p>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-[120px] z-20" style="background:linear-gradient(to bottom, transparent, #0f1117);"></div>
+  </section>
+
+  <section class="relative section-dark" id="problem" style="padding:6.5rem 0 5rem;margin-top:-2px;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <h2 class="reveal text-4xl md:text-6xl font-black leading-[1.05] tracking-tight mb-6" style="color:#f0f0f2;">
+        Ohne zentrales Monitoring verlieren Teams<br><span style="color:#8f6a3f;">den Überblick</span>
+      </h2>
+      <p class="reveal text-lg max-w-[620px] leading-relaxed mb-16" style="color:#9a9aaa;">Drei Kennzahlen, die zeigen, warum eine webbasierte Monitoring-Plattform für WAMOCON Web-Applikationen unverzichtbar ist.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(143,106,63,.07);border:1px solid rgba(143,106,63,.25);">
+          <span class="block stat-value font-black leading-none mb-3 tabular-nums" style="color:#8f6a3f;" data-target="100" data-suffix="%">0</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">Webbasiert</span>
+          <span class="block text-xs" style="color:#7a7a88;">vollständig browserbasiert, keine Installation erforderlich</span>
+        </div>
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(143,106,63,.07);border:1px solid rgba(143,106,63,.25);">
+          <span class="block stat-value font-black leading-none mb-3 tabular-nums" style="color:#8f6a3f;" data-target="99" data-suffix="%">0</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">Angestrebte Verfügbarkeit</span>
+          <span class="block text-xs" style="color:#7a7a88;">99,5 % im Jahresmittel gemäß SLA</span>
+        </div>
+        <div class="reveal text-center p-8 rounded-2xl" style="background:rgba(143,106,63,.07);border:1px solid rgba(143,106,63,.25);">
+          <span class="block text-xs font-semibold mb-2 uppercase tracking-[0.12em]" style="color:#a07843;">ausschließlich</span>
+          <span class="block stat-value font-black leading-none mb-1 tabular-nums" style="color:#8f6a3f;" data-target="1" data-separator="">0</span>
+          <span class="block text-sm font-semibold mb-2" style="color:#d3d3da;">B2B</span>
+          <span class="block text-lg font-semibold mb-1" style="color:#f0f0f2;">Plattform für Unternehmen</span>
+          <span class="block text-xs" style="color:#7a7a88;">das Angebot richtet sich an Unternehmen und gewerbliche Nutzer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32 section-dark" id="warum" style="background:#050508;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-5" style="color:#f0f0f2;">Warum AppLens</h2>
+        <p class="reveal text-lg max-w-[650px] mx-auto leading-relaxed" style="color:#9999a1;">Vier klare Vorteile für Unternehmen, die ihre WAMOCON Web-Applikationen zentral überwachen und kontrollieren wollen.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Zentrale Überwachung</h3>
+          <p style="color:#9a9aaa;">AppLens bietet das Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen auf einer einzigen Plattform.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Vollständig webbasiert</h3>
+          <p style="color:#9a9aaa;">AppLens ist eine webbasierte Plattform, die direkt im Browser genutzt werden kann, ohne Installation oder lokale Software.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Software-as-a-Service</h3>
+          <p style="color:#9a9aaa;">Als SaaS-Plattform wird AppLens über das Internet bereitgestellt und vom Anbieter kontinuierlich weiterentwickelt und angepasst.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl card-hover" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);">
+          <h3 class="text-xl font-bold mb-3" style="color:#f0f0f2;">Ausschließlich B2B</h3>
+          <p style="color:#9a9aaa;">Das Angebot richtet sich an Unternehmen und gewerbliche Nutzer. AppLens ist ein B2B-Angebot, konzipiert für professionelle Anforderungen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funktionen" class="py-24 section-alt">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-14">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">Kernfunktionen im Überblick</h2>
+        <p class="reveal text-lg max-w-[680px] mx-auto" style="color:var(--color-muted);">Der genaue Funktionsumfang von AppLens als webbasierte Software-as-a-Service-Plattform für das Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Monitoring</h3>
+          <p style="color:var(--color-muted);">Überwachung von WAMOCON Web-Applikationen in Echtzeit. AppLens stellt den Status aller verbundenen Anwendungen übersichtlich dar.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Zentrales Dashboard</h3>
+          <p style="color:var(--color-muted);">Zentrale Überwachung aller WAMOCON Web-Applikationen auf einem einzigen Dashboard. Klare Auswertungen und Statusberichte auf einen Blick.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Benutzerverwaltung</h3>
+          <p style="color:var(--color-muted);">Sichere Anmeldung mit Nutzerkonto. Die Plattform schützt den Zugang durch Authentifizierung und Zugangsdatenverwaltung.</p>
+        </article>
+        <article class="reveal p-7 rounded-2xl bg-white border card-hover accent-hover">
+          <h3 class="text-xl font-bold mb-3">Analytics</h3>
+          <p style="color:var(--color-muted);">Auswertungen und Berichte zur Nutzung und zum Status der überwachten WAMOCON Web-Applikationen. Datengestützte Entscheidungsgrundlage für Unternehmen.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" id="process" style="background:#090a0e;">
+    <div class="max-w-[1100px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:#f0f0f2;">Monitoring-Workflow als Planungsfluss</h2>
+        <p class="reveal text-lg max-w-[760px] mx-auto" style="color:#a2a2ab;">Das Ziel von AppLens: WAMOCON Web-Applikationen zentral überwachen und kontrollieren. Der Ablauf zeigt den Weg vom Zugang bis zur laufenden Überwachung.</p>
+      </div>
+      <div class="reveal process-shell" id="processFlow">
+        <div class="process-track">
+          <div class="process-track__bar" id="processFlowBar"></div>
+          <div class="process-track__dot" id="processFlowDot"></div>
+        </div>
+        <div class="process-grid">
+          <article class="process-step process-step--active" tabindex="0">
+            <div class="process-step__index">01</div>
+            <h3 class="process-step__title">Registrieren</h3>
+            <p class="process-step__text">Nutzerkonto anlegen und Zugang zur AppLens-Plattform erhalten. Der Registrierungsprozess ist vollständig webbasiert.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Der Auftraggeber gibt ein verbindliches Angebot ab, indem er den Registrierungsprozess auf der Plattform abschließt und die AGB akzeptiert.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">02</div>
+            <h3 class="process-step__title">Zugang einrichten</h3>
+            <p class="process-step__text">Zugangsdaten verwalten und die Plattform für den gewerblichen Einsatz konfigurieren.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Der Auftraggeber ist verpflichtet, seine Zugangsdaten geheim zu halten und vor dem Zugriff Dritter zu schützen.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">03</div>
+            <h3 class="process-step__title">Monitoring starten</h3>
+            <p class="process-step__text">WAMOCON Web-Applikationen einbinden und das zentrale Monitoring aktivieren.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">AppLens stellt die Plattform als Software-as-a-Service über das Internet zur Verfügung. Die Plattform kann jederzeit im Browser aufgerufen werden.</div>
+          </article>
+          <article class="process-step" tabindex="0">
+            <div class="process-step__index">04</div>
+            <h3 class="process-step__title">Überwachen und auswerten</h3>
+            <p class="process-step__text">Dashboard und Analytics nutzen, um den Status aller WAMOCON Web-Applikationen zentral im Blick zu behalten.</p>
+            <p class="process-step__hint">Zum Aufklappen klicken</p>
+            <div class="process-step__more">Ergebnis: Zentrale Übersicht und Kontrolle über alle WAMOCON Web-Applikationen auf einer einzigen Plattform.</div>
+          </article>
+        </div>
+        <p class="process-target"><strong>Ziel:</strong> Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen. Das Angebot richtet sich an Unternehmen und gewerbliche Nutzer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" style="background:#0f1117;" id="ablauf">
+    <div class="max-w-[1000px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-12">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4" style="color:#f0f0f2;">So funktioniert es in 3 Schritten</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(143,106,63,.08);border:1px solid rgba(143,106,63,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#a07843;">Schritt 1</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Registrieren</h3>
+          <p style="color:#9a9aaa;">Nutzerkonto anlegen und den Registrierungsprozess auf der Plattform abschließen sowie die AGB akzeptieren.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(143,106,63,.08);border:1px solid rgba(143,106,63,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#a07843;">Schritt 2</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Verbinden</h3>
+          <p style="color:#9a9aaa;">WAMOCON Web-Applikationen in die Plattform einbinden und das zentrale Monitoring konfigurieren.</p>
+        </div>
+        <div class="reveal p-7 rounded-2xl" style="background:rgba(143,106,63,.08);border:1px solid rgba(143,106,63,.25);">
+          <span class="text-sm font-bold uppercase tracking-wider" style="color:#a07843;">Schritt 3</span>
+          <h3 class="text-xl font-bold mt-2 mb-2" style="color:#f0f0f2;">Überwachen</h3>
+          <p style="color:#9a9aaa;">Dashboard und Analytics nutzen, um alle WAMOCON Web-Applikationen zentral zu überwachen und auszuwerten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24" id="faq">
+    <div class="max-w-[900px] mx-auto px-5 md:px-10">
+      <div class="text-center mb-10">
+        <h2 class="reveal text-3xl md:text-5xl font-bold tracking-tight mb-4">Häufige Fragen</h2>
+      </div>
+      <div id="faqList" class="rounded-2xl bg-white border overflow-hidden">
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Wer kann AppLens nutzen?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">AppLens richtet sich an Unternehmen und gewerbliche Nutzer. Es handelt sich um ein B2B-Angebot. Verbraucher im Sinne des § 13 BGB sind nicht Zielgruppe dieses Angebots.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Was überwacht AppLens?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">AppLens ist eine webbasierte Software-as-a-Service-Plattform für das Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Wie hoch ist die angestrebte Verfügbarkeit?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Der Anbieter bemüht sich um eine Verfügbarkeit der Plattform von 99,5 % im Jahresmittel. Geplante Wartungsarbeiten, die vorab angekündigt werden, gelten nicht als Ausfallzeit.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question w-full text-left px-6 py-5 flex items-center justify-between">
+            <span class="font-semibold">Ist eine Installation erforderlich?</span>
+            <span class="faq-question__icon relative w-5 h-5"></span>
+          </button>
+          <div class="faq-answer px-6 pb-5" style="color:var(--color-muted);">Nein. AppLens ist vollständig webbasiert und wird als SaaS über das Internet bereitgestellt. Es ist keine lokale Installation erforderlich.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 section-dark" id="final-cta" style="background:#050508;">
+    <div class="max-w-[900px] mx-auto px-5 md:px-10 text-center">
+      <h2 class="reveal text-3xl md:text-5xl font-black leading-[1.1] mb-5" style="color:#f0f0f2;">WAMOCON Web-Applikationen zentral im Blick behalten.</h2>
+      <p class="reveal text-lg max-w-[620px] mx-auto mb-9" style="color:#9a9aaa;">AppLens ist eine webbasierte Software-as-a-Service-Plattform für das Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen.</p>
+      <div class="reveal flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://applens.vercel.app" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 30px;background:#8f6a3f;color:#fff;font-weight:700;border-radius:12px;text-decoration:none;">Jetzt AppLens öffnen</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#050508;color:#8e8e93;padding:32px 20px 40px;text-align:center;border-top:1px solid rgba(255,255,255,.08);">
+    <div class="flex items-center justify-center gap-2 mb-2">
+      <img src="app-icon-light.svg" alt="AppLens" style="width:18px;height:18px;opacity:.85;">
+      <span style="font-weight:700;color:#f0f0f2;">AppLens</span>
+    </div>
+    <p style="font-size:.9rem;">Webbasierte SaaS-Plattform für das Monitoring und die zentrale Überwachung von WAMOCON Web-Applikationen.</p>
+    <div style="margin-top:12px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:.85rem;">
+      <a href="https://applens.vercel.app" target="_blank" rel="noopener noreferrer" style="color:#c7ac82;text-decoration:none;">App öffnen</a>
+      <a href="impressum.html" style="color:#c7ac82;text-decoration:none;">Impressum</a>
+      <a href="agb.html" style="color:#c7ac82;text-decoration:none;">AGB</a>
+      <a href="datenschutz.html" style="color:#c7ac82;text-decoration:none;">Datenschutz</a>
+    </div>
+    <p style="font-size:.75rem;margin-top:16px;color:#555558;">&copy; 2026 WAMOCON GmbH &mdash; Mergenthalerallee 79&ndash;81, 65760 Eschborn &mdash; info@wamocon.com</p>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Nach oben">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
+    <div class="cookie-banner__inner">
+      <h3 style="font-weight:700;font-size:1.05rem;margin-bottom:.45rem;">Hinweis zu Cookies</h3>
+      <p style="font-size:.92rem;line-height:1.6;color:#4d4d55;">AppLens verwendet technisch notwendige Cookies für Session-Management und Authentifizierung. Es werden keine Werbe-Tracker eingesetzt.</p>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:1rem;flex-wrap:wrap;">
+        <button class="cookie-banner__btn cookie-banner__btn--reject" data-cookie-action="reject">Schließen</button>
+        <button class="cookie-banner__btn cookie-banner__btn--accept" data-cookie-action="accept">Verstanden</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
